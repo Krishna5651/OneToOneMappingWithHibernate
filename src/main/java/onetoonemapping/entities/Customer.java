@@ -10,7 +10,7 @@ package onetoonemapping.entities;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
-@Entity
+@Entity 
 @Table(name = "customer")
 public class Customer {
 @Id
