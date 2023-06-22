@@ -12,33 +12,33 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class OneToOneMappingApplication {
 
-	public static void main(String[] args){
-		StandardServiceRegistry ssrrr=new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-		Metadata metadata=new MetadataSources(ssrrr).getMetadataBuilder().build();
+    public static void main(String[] args) {
+        StandardServiceRegistry ssrrr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+        Metadata metadata = new MetadataSources(ssrrr).getMetadataBuilder().build();
 
-		SessionFactory factory=metadata.getSessionFactoryBuilder().build();
-		Session session=factory.openSession();
+        SessionFactory factory = metadata.getSessionFactoryBuilder().build();
+        Session session = factory.openSession();
 
-		Transaction txs=session.beginTransaction();
+        Transaction txs = session.beginTransaction();
 
-		Customer customer=new Customer();
-		customer.setCustomer_name("Ajay");
-		customer.setCustomer_email("ajay@gmail.com");
-		customer.setCustomer_address("sangali");
+        Customer customer = new Customer();
+        customer.setCustomer_name("Ajay");
+        customer.setCustomer_email("ajay@gmail.com");
+        customer.setCustomer_address("sangali");
 
 
-		onetoonemapping.entities.Transaction transaction=new onetoonemapping.entities.Transaction();
-		transaction.setTxn_date("30/03/2023");
-		transaction.setTxn_total("18000");
+        onetoonemapping.entities.Transaction transaction = new onetoonemapping.entities.Transaction();
+        transaction.setTxn_date("30/03/2023");
+        transaction.setTxn_total("18000");
 
-		customer.setTxn(transaction);
-		transaction.setCustomer(customer);
+        customer.setTxn(transaction);
+        transaction.setCustomer(customer);
 
-		session.persist(customer);
-		txs.commit();
+        session.persist(customer);
+        txs.commit();
 
-		session.close();
-		System.out.println("Sussecfully done");
-	}
+        session.close();
+        System.out.println("Sussecfully done");
+    }
 
 }
